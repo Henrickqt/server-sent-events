@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSE</title>
+  </head>
+  <body>
+    <h1>SSE - Mensagens em Tempo Real</h1>
+    <div id="messages"></div>
+    <script>
+      const eventSource = new EventSource("/sse");
+      eventSource.addEventListener("message", (event) => {
+        const messages = document.getElementById("messages");
+        const element = document.createElement("p");
+        element.innerHTML = event.data;
+        messages.appendChild(element);
+      });
+    </script>
+  </body>
+</html>
